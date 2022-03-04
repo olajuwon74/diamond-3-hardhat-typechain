@@ -9,6 +9,7 @@ import {
 import {
   DiamondCutFacet,
   DiamondLoupeFacet,
+  NewStuff,
   OwnershipFacet,
   Test1Facet,
 } from "../typechain-types";
@@ -114,13 +115,22 @@ describe("DiamondTest", async function () {
     assert.sameMembers(result, selectors);
   });
 
+  // it("should test function call", async () => {
+  //   const test1Facet = (await ethers.getContractAt(
+  //     "Test1Facet",
+  //     DiamondAddress
+  //   )) as Test1Facet;
+  //   await test1Facet.test1Func10();
+  // });
+
   it("should test function call", async () => {
-    const test1Facet = (await ethers.getContractAt(
-      "Test1Facet",
+    const newStuff = (await ethers.getContractAt(
+      "Newfacet",
       DiamondAddress
-    )) as Test1Facet;
-    await test1Facet.test1Func10();
+    )) as NewStuff;
+    await newStuff.addUp(3,4);
   });
+
 
   it("should replace supportsInterface function", async () => {
     const t1facet = await ethers.getContractFactory("Test1Facet");

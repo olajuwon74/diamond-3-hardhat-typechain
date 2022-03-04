@@ -63,6 +63,7 @@ export async function deployDiamond() {
   let tx;
   let receipt: ContractReceipt;
   // call to init function
+
   let functionCall = diamondInit.interface.encodeFunctionData("init");
   tx = await diamondCut.diamondCut(cut, diamondInit.address, functionCall);
   console.log("Diamond cut tx: ", tx.hash);
